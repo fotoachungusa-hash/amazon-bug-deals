@@ -60,7 +60,7 @@ def check_coupon_and_discount(url):
     if original_price and deal_price:
         final_price = deal_price - coupon_value
         discount_rate = 1 - (final_price / original_price)
-        if coupon_value > 0 and discount_rate > 0.2:
+        if coupon_value > 0 and discount_rate > 0.05:
             return {
                 "url": url,
                 "original": original_price,
@@ -72,7 +72,7 @@ def check_coupon_and_discount(url):
     return None
 
 st.title("💥 Amazon 閃電特賣 + coupon 疊加檢測器")
-max_items = st.slider("檢查商品數量", 5, 50, 10)
+max_items = st.slider("檢查商品數量", 5, 100, 10)
 if st.button("開始搜尋"):
     st.write("⏳ 正在搜尋，請稍等...")
     links = get_deal_links()
