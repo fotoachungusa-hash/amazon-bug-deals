@@ -69,6 +69,8 @@ def check_coupon_and_discount(url):
                 "final_price": final_price,
                 "discount_rate": round(discount_rate*100, 1)
             }
+    # 除錯輸出
+    print("DEBUG:", url, original_price, deal_price, coupon_value)
     return None
 
 st.title("💥 Amazon 閃電特賣 + coupon 疊加檢測器")
@@ -76,6 +78,10 @@ max_items = st.slider("檢查商品數量", 5, 100, 10)
 if st.button("開始搜尋"):
     st.write("⏳ 正在搜尋，請稍等...")
     links = get_deal_links()
+    st.write(f"✅ 找到 {len(links)} 個閃電特賣商品連結")
+    st.write("前 5 個商品連結：")
+    for l in links[:5]:
+        st.write(l)
     results = []
     for link in links[:max_items]:
         try:
