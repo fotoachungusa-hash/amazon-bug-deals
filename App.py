@@ -60,7 +60,7 @@ def check_coupon_and_discount(url):
     if original_price and deal_price:
         final_price = deal_price - coupon_value
         discount_rate = 1 - (final_price / original_price)
-        if coupon_value > 0 and discount_rate > 0.5:
+        if coupon_value > 0 and discount_rate > 0.2:
             return {
                 "url": url,
                 "original": original_price,
